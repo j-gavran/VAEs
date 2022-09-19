@@ -36,3 +36,8 @@ mlflow ui
 
 ## Training
 Configure hydra conf files and run directly from model scripts.
+
+## TODO
+- convolutional neural networks
+- more datasets
+- other VAE models
