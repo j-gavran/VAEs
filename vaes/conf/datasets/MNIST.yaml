@@ -1,0 +1,9 @@
+input_dim: 784
+data_name: MNIST
+
+data_params:
+  batch_size: 128
+  dequantize: True
+  rescale: False
+  to_gpu: True
+  shuffle_data: True

@@ -1,0 +1,33 @@
+defaults:
+  - _self_
+  - datasets: MNIST
+
+hydra:  
+  output_subdir: null  
+  run:  
+    dir: .
+
+model_config:
+  learning_rate: 1e-3
+  activation: ReLU
+  latent_dim: 64
+  output_activation: Identity
+  weight_decay: 1e-7
+
+  hidden_layers: [128, 128, 128]
+
+  use_resnet: True
+
+logger_config:
+  experiment_name: TEST
+  run_name: VAE
+  model_name: MNIST_VAE
+  early_stop_dict: 
+    monitor: val_loss
+    mode: min
+    patience: 20
+
+trainer_config: 
+  gpus: 1 
+  max_epochs: 101
+  num_sanity_val_steps: 0

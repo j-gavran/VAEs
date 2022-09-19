@@ -1,0 +1,35 @@
+defaults:
+  - _self_
+  - datasets: Higgs
+
+hydra:  
+  output_subdir: null  
+  run:  
+    dir: .
+
+model_config:
+  learning_rate: 3e-4
+  activation: ReLU
+  input_dim: 10
+  latent_dim: 5
+  beta: 0.1
+  output_activation: Identity
+
+  use_resnet: True
+  hidden_layers: [128, 128, 128, 128]
+  
+  stage_one_vae: file:./mlruns/2/20e6ead21d384044a9bd9118cc4e8beb/artifacts/Higgs_bVAE
+
+logger_config:
+  experiment_name: RESULTS1
+  run_name: 2stageVAE
+  model_name: Higgs_2stageVAE
+  early_stop_dict: 
+    monitor: val_loss
+    mode: min
+    patience: 20
+
+trainer_config: 
+  gpus: 1 
+  max_epochs: 201
+  num_sanity_val_steps: 0
